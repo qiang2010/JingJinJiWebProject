@@ -1,5 +1,6 @@
 package jingjinji.getData;
 
+import java.lang.Thread.State;
 import java.util.Timer;
 
 import javax.servlet.ServletException;
@@ -15,18 +16,34 @@ import javax.servlet.http.HttpServlet;
  *
  */
 
-public class DownloadServlet extends HttpServlet{
+public class DownloadServlet{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
 
-	private long timeInterval = 120; //每隔两分钟执行一次 
 	
-	@Override
-	public void init() throws ServletException {
-//		super.init();
-//		Timer timer  = new Timer();
-//		timer.schedule(new AutoDownloadTask(),timeInterval);
+	public static void main(String[] args) {
+		Thread downloadThread = new Thread(new AutoDownloadThread());
+		downloadThread.start();
+		do{
+			State state = downloadThread.getState();
+			if(state == Thread.State.TERMINATED ){
+				System.out.println("new Thread.");
+				downloadThread = new Thread(new AutoDownloadThread());
+				downloadThread.start();
+			}else{
+				try {
+					Thread.sleep(30000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}while(true);
+		
+		
+	
+		
 	}
+	
+	
 }

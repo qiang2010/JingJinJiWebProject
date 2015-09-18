@@ -4,7 +4,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Timer;
 
-import jingjinji.getData.AutoDownloadTask;
+import jingjinji.getData.AutoDownloadThread;
 
 
 
@@ -28,8 +28,9 @@ public class Predict {
 		
 		// 开启一个线程
 		
-		Timer timer  = new Timer();
-		timer.schedule(new AutoDownloadTask(),timeInterval);
+		Thread downloadThread = new Thread(new AutoDownloadThread());
+		downloadThread.start();
+		
 		
 		try {
 			Thread.sleep(30*1000);

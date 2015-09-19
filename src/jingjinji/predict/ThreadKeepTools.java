@@ -2,13 +2,8 @@ package jingjinji.predict;
 
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.RandomAccessFile;
-import java.nio.channels.FileChannel;
-import java.nio.channels.FileLock;
 
 public class ThreadKeepTools {
 	public static boolean isRunning(String processName) {

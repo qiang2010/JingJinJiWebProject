@@ -1,10 +1,6 @@
 package jingjinji.getData;
 
 import java.lang.Thread.State;
-import java.util.Timer;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 
 
 /**
@@ -17,18 +13,14 @@ import javax.servlet.http.HttpServlet;
  */
 
 public class DownloadServlet{
-	/**
-	 * 
-	 */
-
-	
+ 
 	public static void main(String[] args) {
 		Thread downloadThread = new Thread(new AutoDownloadThread());
 		downloadThread.start();
 		do{
 			State state = downloadThread.getState();
 			if(state == Thread.State.TERMINATED ){
-				System.out.println("new Thread.");
+				System.out.println("new Thread....");
 				downloadThread = new Thread(new AutoDownloadThread());
 				downloadThread.start();
 			}else{
@@ -39,9 +31,6 @@ public class DownloadServlet{
 				}
 			}
 		}while(true);
-		
-		
-	
 		
 	}
 	

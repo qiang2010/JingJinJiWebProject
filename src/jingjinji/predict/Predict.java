@@ -26,18 +26,19 @@ public class Predict {
 	public void predict(){
 		System.out.println("Getting started!");
 		
-		// 开启一个线程
-		
-		Thread downloadThread = new Thread(new AutoDownloadThread());
-		downloadThread.start();
+		// 这里不再开启下载的线程，而是在另外的类中单独启动。
 		
 		
-		try {
-			Thread.sleep(30*1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		Thread downloadThread = new Thread(new AutoDownloadThread());
+//		downloadThread.start();
+		
+//		
+//		try {
+//			Thread.sleep(30*1000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		System.out.println("Prepare data.");
 		
